@@ -1,7 +1,5 @@
 import pandas as pd
-import streamlit as st
 
-@st.cache_data
 def data_loading():
     df = pd.read_csv("data/personality_dataset.csv")
     df.rename(columns={

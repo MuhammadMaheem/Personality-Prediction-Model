@@ -13,7 +13,9 @@ def train_load_and_save_model(df, model_path, selected_features):
     X = df[selected_features]
     y = df["Personality"]
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, stratify=y)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, train_size=0.8, stratify=y, random_state=42
+    )
 
     pipeline = Pipeline([
         ("scaler", StandardScaler()),
@@ -26,4 +28,3 @@ def train_load_and_save_model(df, model_path, selected_features):
         pickle.dump(pipeline, f)
 
     return pipeline
-    
