@@ -12,5 +12,13 @@ def data_loading():
         "Post_frequency": "PostFrequency",
         "Personality": "Personality"
     }, inplace=True)
+
     df.dropna(inplace=True)
+
+    if df["StageFear"].dtype == object:
+        df["StageFear"] = df["StageFear"].map({"Yes": 1, "No": 0})
+
+    if df["DrainedAfterSocializing"].dtype == object:
+        df["DrainedAfterSocializing"] = df["DrainedAfterSocializing"].map({"Yes": 1, "No": 0})
+
     return df
